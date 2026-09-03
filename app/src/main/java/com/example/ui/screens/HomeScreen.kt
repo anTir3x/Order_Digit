@@ -97,13 +97,16 @@ fun HomeScreen(
                     modifier = Modifier
                         .size(38.dp)
                         .clip(RoundedCornerShape(10.dp))
-                        .border(1.dp, OrderCyan.copy(alpha = 0.5f), RoundedCornerShape(10.dp)),
+                        .background(Color.White)
+                        .border(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.2f), RoundedCornerShape(10.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_order_digit_logo),
                         contentDescription = "Order Digit Logo",
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(2.dp)
                     )
                 }
                 Text(
@@ -161,15 +164,18 @@ fun HomeScreen(
                     // Logo Image Preview
                     Box(
                         modifier = Modifier
-                            .size(72.dp)
-                            .clip(RoundedCornerShape(18.dp))
-                            .border(2.dp, OrderCyan.copy(alpha = 0.4f), RoundedCornerShape(18.dp)),
+                            .size(80.dp)
+                            .clip(RoundedCornerShape(20.dp))
+                            .background(Color.White)
+                            .border(1.5.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.2f), RoundedCornerShape(20.dp)),
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_order_digit_logo),
                             contentDescription = "Order Digit Logo",
-                            modifier = Modifier.fillMaxSize()
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(4.dp)
                         )
                     }
 

@@ -30,8 +30,6 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Psychology
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.SmartToy
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -237,48 +235,26 @@ fun GameScreen(
                     colors = CardDefaults.cardColors(containerColor = OrderCyanContainer.copy(alpha = 0.25f)),
                     border = CardDefaults.outlinedCardBorder().copy(brush = androidx.compose.ui.graphics.SolidColor(OrderCyan.copy(alpha = 0.4f)))
                 ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceBetween
+                    Column(
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 7.dp)
                     ) {
-                        Column {
-                            Text(
-                                text = when (gameMode) {
-                                    GameMode.SOLO_PRACTICE -> "🎯 Target Code:"
-                                    GameMode.VS_AI -> "🎯 AI Secret (Target):"
-                                    else -> "🎯 P${3 - activePlayerIndex} Target:"
-                                },
-                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                        Text(
+                            text = when (gameMode) {
+                                GameMode.SOLO_PRACTICE -> "🎯 Target Code:"
+                                GameMode.VS_AI -> "🎯 AI Secret (Target):"
+                                else -> "🎯 P${3 - activePlayerIndex} Target:"
+                            },
+                            style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                            color = OrderCyan
+                        )
+                        Text(
+                            text = "● ● ● ●",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                fontWeight = FontWeight.Black,
+                                fontFamily = FontFamily.Monospace,
                                 color = OrderCyan
                             )
-                            Text(
-                                text = if (isTargetSecretRevealed && targetSecret.isNotEmpty()) {
-                                    targetSecret.map { "$it " }.joinToString("").trim()
-                                } else {
-                                    "● ● ● ●"
-                                },
-                                style = MaterialTheme.typography.labelMedium.copy(
-                                    fontWeight = FontWeight.Black,
-                                    fontFamily = FontFamily.Monospace,
-                                    color = OrderCyan
-                                )
-                            )
-                        }
-
-                        IconButton(
-                            onClick = onToggleTargetSecretRevealed,
-                            modifier = Modifier
-                                .size(30.dp)
-                                .testTag("btn_peek_target_secret")
-                        ) {
-                            Icon(
-                                imageVector = if (isTargetSecretRevealed) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                                contentDescription = "Reveal Target Secret",
-                                tint = OrderCyan,
-                                modifier = Modifier.size(16.dp)
-                            )
-                        }
+                        )
                     }
                 }
 
@@ -391,7 +367,7 @@ fun GameScreen(
                             result = result,
                             isLatest = index == guesses.lastIndex,
                             targetSecret = targetSecret,
-                            isTargetRevealed = isTargetSecretRevealed
+                            isTargetRevealed = false
                         )
                     }
                 }
