@@ -1,0 +1,7 @@
+{
+  "name": "Order Digit",
+  "description": "Two-player deductive number puzzle game with Order and Digit evaluations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
